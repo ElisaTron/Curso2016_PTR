@@ -85,10 +85,18 @@ namespace Servicios
     {
       Usuario result = null;
 
-      //  TODO Usar el metodo ValidateUserPasswordInternal para validar la combinacion user/password
-      //  TODO Sabiendo que la combinacion es valida, obtenemos los datos del usuario desde EF como hariamos normalmente
-      //  TODO Actualizar los datos de ultimo login correcto o no, guardar cambios!!
-      return result;
+            //  TODO Usar el metodo ValidateUserPasswordInternal para validar la combinacion user/password
+
+            string clave = GetUserPasswordInternal(login);
+            if (clave == password)
+            {
+                Usuario user = new Usuario();
+                user = OMBContext.DB.Usuarios.Where(u => u.Login == login).FirstOrDefault();
+                return user;
+            }
+            //  TODO Sabiendo que la combinacion es valida, obtenemos los datos del usuario desde EF como hariamos normalmente
+            //  TODO Actualizar los datos de ultimo login correcto o no, guardar cambios!!
+            return result;
     }
 
     /// <summary>
@@ -98,9 +106,18 @@ namespace Servicios
     /// <returns></returns>
     private bool ValidarUsuario(Usuario user)
     {
-      //  TODO verificar que el login no este repetido
-      //  TODO Asegurar que no se generen dos usuarios para un mismo Empleado
-      return true;
+            //  TODO verificar que el login no este repetido
+            var valida = OMBContext.DB.Empleados.Where(e => e.Legajo == user.Empleado.Legajo).Count();
+            if (valida != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            //  TODO Asegurar que no se generen dos usuarios para un mismo Empleado
+         
     }
 
 
@@ -156,5 +173,23 @@ namespace Servicios
       }
       return result;
     }
-  }
+    private string GetUserPasswordInternal(string login)
+        {
+            string passTemp = null;
+
+            try
+            {
+                //  TODO incorporar hashing para comparar con la que obtenemos de la tabla
+                passTemp = OMBContext.DB.Database
+                            .SqlQuery<string>("select Password from Usuarios where Login = @p0", login)
+                            .FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                //  TODO Lanzar excepcion???
+                Console.WriteLine("No se puede recuperar la contraseña");
+            }
+            return null;
+        }
+    }
 }

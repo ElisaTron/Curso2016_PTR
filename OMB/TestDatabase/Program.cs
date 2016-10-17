@@ -318,7 +318,7 @@ namespace TestDatabase
 
               nuevoContacto.Dato = dato;
               nuevoContacto.Comentario = string.IsNullOrWhiteSpace(comentario) ? null : comentario;
-              nuevoContacto.Tipo = tipos[numOpcion];
+              nuevoContacto.Tipo = tipos[numOpcion-1];
 
               persona.InfoContacto.Add(nuevoContacto);
             }

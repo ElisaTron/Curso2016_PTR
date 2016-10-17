@@ -34,15 +34,12 @@ namespace OMB_Desktop.Views
     {
       SecurityServices seg = new SecurityServices();
 
-      //  Validar que usuario y password tengan contenido
+      //  validar que usuario y password tengan contenido
       Usuario user = seg.LoginUsuario(txtUsuario.Text, txtPassword.Password);
-
       if (user != null)
       {
         MessageBox.Show("Usuario correctamente logueado!!!");
-        
         //  TODO: usuario o sesion?
-        //  Avisamos a quien quiera escuchar que hubo un login correcto...
         if (LoginOK != null)
           LoginOK(this, user);
       }
