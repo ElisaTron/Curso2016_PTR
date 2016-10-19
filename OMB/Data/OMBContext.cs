@@ -38,6 +38,10 @@ namespace Data
 
     public DbSet<Usuario> Usuarios { get; set; }
 
+    public DbSet<Libro> Libros { get; set; } 
+
+    public DbSet<Editorial> Editoriales { get; set; } 
+
     private StreamWriter writer;
 
     public static OMBContext DB
@@ -82,6 +86,9 @@ namespace Data
 
       modelBuilder.Configurations.Add(new ConfigurarEmpleado());
       modelBuilder.Configurations.Add(new ConfigurarUsuario());
+      modelBuilder.Configurations.Add(new ConfigurarEditorial());
+      modelBuilder.Configurations.Add(new ConfigurarLibro());   
+               
     }
 
     public void MostrarCambios([CallerMemberName] string header = null)
@@ -270,4 +277,36 @@ namespace Data
         .Map(cfg => cfg.MapKey("Legajo"));
     }
   }
+
+    public class ConfigurarLibro : EntityTypeConfiguration<Libro>
+    {
+        public ConfigurarLibro()
+        {
+
+            this.ToTable("Libros");
+
+            this.HasKey(lib => lib.ID_Libro);
+
+            this.HasRequired(lib => lib.Editorial)
+            .WithMany()
+            .Map(cfg => cfg.MapKey("ID_Editorial"));
+
+        }
+
+    }
+
+    public class ConfigurarEditorial : EntityTypeConfiguration<Editorial>
+    {
+        public ConfigurarEditorial()
+        {
+            this.ToTable("Editoriales");
+
+            this.HasKey(ed => ed.ID_Editorial);
+
+            this.HasRequired(ed => ed.localidad)
+             .WithMany()
+             .Map(cfg => cfg.MapKey("ID_Localidad"));
+
+        } 
+    }
 }

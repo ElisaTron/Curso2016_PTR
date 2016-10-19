@@ -1,4 +1,4 @@
-﻿#define PASO_9
+﻿#define PASO_8
 
 using System;
 using System.Collections.Generic;
@@ -355,14 +355,14 @@ namespace TestDatabase
 #if PASO_7
       //  Agregamos Empleado asociado a Persona
       //
-      Persona persona = ctx.Personas.FirstOrDefault(per => per.Apellidos == "Thedy");
+      Persona persona = ctx.Personas.FirstOrDefault(per => per.Apellidos == "Tron");
 
       if (persona != null)
       {
         Empleado nuevo = new Empleado();
 
         nuevo.Persona = persona;
-        nuevo.Legajo = "167055";
+        nuevo.Legajo = "36588";
         nuevo.CUIT = "20-18339577-8";
         nuevo.FechaIngreso = new DateTime(1986, 12, 9);
 
@@ -374,11 +374,11 @@ namespace TestDatabase
 #if PASO_8
       //  Creamos un usuario y utilizamos el servicio para crearlo con su password
       //
-      Empleado empleado = ctx.Empleados.FirstOrDefault(emp => emp.Legajo == "167055");
+      Empleado empleado = ctx.Empleados.FirstOrDefault(emp => emp.Legajo == "36588");
       Usuario user = new Usuario();
       SecurityServices seg = new SecurityServices();
 
-      user.Login = "ethedy1";
+      user.Login = "elitron";
       user.Empleado = empleado;
       user.Blocked = false;
 
@@ -395,28 +395,34 @@ namespace TestDatabase
 
 #if PASO_9
 
-      //  TODO agregar codigo para ingresar con el ID y password que asignamos a nuestro usuario
+            //  TODO agregar codigo para ingresar con el ID y password que asignamos a nuestro usuario
 
 #endif
 
-      /*
-            Categoria newCat = new Categoria() {Nombre = "Informatica", Parent = parent};
 
-            ctx.Categorias.Add(newCat);
-
-            parent.SubCategorias.Add(newCat);
-            ctx.SaveChanges();
+#if PASO_10
 
 
-            //  ctx.Categorias.Load();
+#endif
 
-            var showCat = ctx.Categorias.FirstOrDefault();
+            /*
+                  Categoria newCat = new Categoria() {Nombre = "Informatica", Parent = parent};
 
-              //.Where(categ => categ.Nombre == "Libros").First();
+                  ctx.Categorias.Add(newCat);
 
-            Console.WriteLine(showCat?.CategoriaID.ToString());
-      */
-      Console.WriteLine("Press Any Key To Continue...");
+                  parent.SubCategorias.Add(newCat);
+                  ctx.SaveChanges();
+
+
+                  //  ctx.Categorias.Load();
+
+                  var showCat = ctx.Categorias.FirstOrDefault();
+
+                    //.Where(categ => categ.Nombre == "Libros").First();
+
+                  Console.WriteLine(showCat?.CategoriaID.ToString());
+            */
+            Console.WriteLine("Press Any Key To Continue...");
       Console.ReadLine();
 
       ctx.Dispose();

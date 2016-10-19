@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="OMB_Desktop.Views.BookAddControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OMB_Desktop.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Background="LightBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="133*"/>
+            <ColumnDefinition Width="167*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="label" Content="ISBN" HorizontalAlignment="Left" Margin="94,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="26" Width="35">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.953"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="txtISBN" HorizontalAlignment="Left" Height="22" Margin="6,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label x:Name="label1" Content="Titulo" HorizontalAlignment="Left" Margin="89,69,0,0" VerticalAlignment="Top" Height="26" Width="40"/>
+        <TextBox x:Name="txtTitulo" HorizontalAlignment="Left" Height="22" Margin="6,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label x:Name="label2" Content="SubTitulo" HorizontalAlignment="Left" Margin="69,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="26" Width="60">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.016"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="txtSubtitulo" HorizontalAlignment="Left" Height="22" Margin="6,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label x:Name="label3" Content="Fecha Publicación" HorizontalAlignment="Left" Margin="25,122,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
+        <TextBox x:Name="txtFechaPublica" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="6,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <Label x:Name="label4" Content="Paginas" HorizontalAlignment="Left" Margin="78,150,0,0" VerticalAlignment="Top" Height="26" Width="51"/>
+        <TextBox x:Name="txtpag" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="6,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label5" Content="Editorial" HorizontalAlignment="Left" Margin="76,181,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.563,-0.19" Height="26" Width="53"/>
+        <ComboBox x:Name="cbEditorial" Grid.Column="1" HorizontalAlignment="Left" Margin="6,181,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+        <Button x:Name="btnAdd" Content="Agregar" Grid.Column="1" HorizontalAlignment="Left" Margin="30,231,0,0" VerticalAlignment="Top" Width="75" Click="btnAdd_Click"/>
+
+
+    </Grid>
+</UserControl>

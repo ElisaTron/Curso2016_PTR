@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Entidades
 {
-    class Libro
+    public class Libro
     {
         public int ID_Libro { get; set; }
         public string ISBN { get; set; }
@@ -18,7 +18,13 @@ namespace Entidades
         public DateTime FechaPublicacion { get; set; }
         public int Paginas { get; set; }
         public string DatosEnvio { get; set; }
+        public byte[] Portada { get; set; }
         public virtual Editorial Editorial { get; set; }
 
+        public Libro()
+        {
+           // ID_Libro = Guid.NewGuid();
+            
+        }
     }
 }

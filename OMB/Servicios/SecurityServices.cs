@@ -183,6 +183,7 @@ namespace Servicios
                 passTemp = OMBContext.DB.Database
                             .SqlQuery<string>("select Password from Usuarios where Login = @p0", login)
                             .FirstOrDefault();
+                return passTemp;
             }
             catch (Exception ex)
             {

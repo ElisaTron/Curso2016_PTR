@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Editorial
+   public class Editorial
     {
 
         public int ID_Editorial { get; set; }
@@ -15,7 +15,11 @@ namespace Entidades
         public string AmpliacionDomicilio { get; set; }
         
         public virtual Localidad localidad { get; set; }
-        public virtual HashSet<Libro> Libros { get; set; }   
-    
+        public virtual HashSet<Libro> Libros { get; set; }
+
+        public Editorial()
+        {
+            Libros = new HashSet<Libro>();
+        }
     }
 }
